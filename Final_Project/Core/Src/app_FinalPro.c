@@ -7,15 +7,14 @@
 #include "app.h"
 #include <stdio.h>
 #include <string.h>
-#include "./BME280/bme280.h"
+#include "bme280.h"
 #include "fonts.h"
 #include "ssd1306.h"
 
-I2C_HandleTypeDef hi2c1;
 
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_I2C1_Init(void);
+
+
+
 
 float temperature;
 float humidity;
@@ -55,12 +54,9 @@ int8_t user_i2c_write(uint8_t id, uint8_t reg_addr, uint8_t *data, uint16_t len)
   return 0;
 }
 
-void App_Init(void)
-{
-  HAL_Init();
-  SystemClock_Config();
-  MX_GPIO_Init();
-  MX_I2C1_Init();
+void App_Init(void){
+
+
 
 
   /* BME280 init */
@@ -115,5 +111,4 @@ void App_MainLoop(void)
 
     HAL_Delay(1000);
   }
-
 
